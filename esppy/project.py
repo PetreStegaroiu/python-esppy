@@ -586,7 +586,7 @@ class Project(ESPObject, collections.abc.MutableMapping):
         out = {}
         for item in self._get(urllib.parse.urljoin(self.base_url,
                                                    'projectMetadata/%s' % self.name)
-                             ).findall('./project/metadata/meta'):
+                              ).findall('./project/metadata/meta'):
             out[item.attrib['id']] = item.text
         return out
 
@@ -818,7 +818,7 @@ class Project(ESPObject, collections.abc.MutableMapping):
         '''
         if group_name not in self.connector_groups:
             self.connector_groups[group_name] = ConnectorGroup(group_name,
-                                                    description=group_description)
+                                                               description=group_description)
 
         group = self.connector_groups[group_name]
 
@@ -840,7 +840,7 @@ class Project(ESPObject, collections.abc.MutableMapping):
         '''
         if isinstance(targets, six.string_types):
             targets = [targets]
-        self.edges.append(Edge(source, targets)) 
+        self.edges.append(Edge(source, targets))
 
     def save(self, path=None):
         '''
@@ -913,7 +913,7 @@ class Project(ESPObject, collections.abc.MutableMapping):
 
     def add_mas_module(self, module):
         self.mas_modules.append(module)
-        
+
     def get_mas_modules(self, expandcode=False):
         '''
         Retrieve all MAS modules
@@ -1215,9 +1215,9 @@ class Project(ESPObject, collections.abc.MutableMapping):
             return out[list(out.keys())[0]]
         raise KeyError("No window with the path '%s'." % path)
 
-#
-# MutableMapping methods
-#
+    #
+    # MutableMapping methods
+    #
 
     def __getitem__(self, key):
         return self.queries[key]
